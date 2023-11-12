@@ -8,27 +8,50 @@ class LoginPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.transparent,
-      body: Column(
-        children: [
-          const Text('Usuário'),
-          const TextFieldWidget(
-            prefixIcon: Icon(Icons.person),
-          ),
-          const Divider(),
-          const TextFieldWidget(
-            prefixIcon: Icon(Icons.lock),
-          ),
-          ElevatedButton(
-            onPressed: () {},
-            child: const Text('Entrar'),
-          ),
-          TextButton(
-            onPressed: () {},
-            child: const Text('Política de Privacidade'),
-          )
-        ],
+      body: Center(
+        child: Column(
+          children: [
+            const Spacer(flex: 5),
+            Expanded(
+              flex: 10,
+              child: Column(
+                children: [
+                  const Spacer(),
+                  const TextFieldWidget(
+                    title: 'Usuário',
+                    prefixIcon: Icon(Icons.person),
+                  ),
+                  const Spacer(),
+                  const TextFieldWidget(
+                    title: 'Senha',
+                    prefixIcon: Icon(Icons.lock),
+                  ),
+                  const Spacer(),
+                  FractionallySizedBox(
+                    widthFactor: 0.45,
+                    child: ElevatedButton(
+                      onPressed: () {},
+                      style: ElevatedButton.styleFrom(
+                        minimumSize: const Size(60, 50),
+                        backgroundColor: const Color(0xFF44bd6e),
+                        foregroundColor: Colors.white,
+                      ),
+                      child: const Text('Entrar'),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+            const Spacer(flex: 4),
+            TextButton(
+              onPressed: () {},
+              child: const Text('Política de Privacidade'),
+            ),
+            const Spacer(),
+         
+          ],
+        ),
       ),
     );
   }
 }
-

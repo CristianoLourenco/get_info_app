@@ -5,10 +5,12 @@ class TextFieldWidget extends StatelessWidget {
     super.key,
     this.widthFactor = 0.70,
     required this.prefixIcon,
+    required this.title,
   });
 
   final double widthFactor;
   final Icon prefixIcon;
+  final String title;
 
   @override
   Widget build(BuildContext context) {
@@ -18,18 +20,34 @@ class TextFieldWidget extends StatelessWidget {
       gapPadding: 100,
     );
 
-    return FractionallySizedBox(
-      widthFactor: widthFactor,
-      child: TextField(
-        decoration: InputDecoration(
-          filled: true,
-          fillColor: Colors.white,
-          prefixIcon: prefixIcon,
-          enabledBorder: border,
-          focusedBorder: border,
-          border: border,
+    return Column(
+      mainAxisSize: MainAxisSize.min,
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Text(
+          title,
+          style: Theme.of(context)
+              .textTheme
+              .labelLarge
+              ?.copyWith(color: Colors.white),
         ),
-      ),
+        const SizedBox(height: 5),
+        FractionallySizedBox(
+          widthFactor: widthFactor,
+          child: TextField(
+            maxLength: 20,
+            decoration: InputDecoration(
+              filled: true,
+              fillColor: Colors.white,
+              prefixIcon: prefixIcon,
+              enabledBorder: border,
+              focusedBorder: border,
+              border: border,
+              counterText: '',
+            ),
+          ),
+        ),
+      ],
     );
   }
 }
