@@ -11,10 +11,7 @@ class HomePage extends StatelessWidget {
         gradient: LinearGradient(
           begin: Alignment.topCenter,
           end: Alignment.bottomCenter,
-          colors: <Color>[
-            Color(0xFF1C4E64),
-           ,
-          ],
+          colors: <Color>[Color(0xFF1C4E64), Color(0xFF299790)],
         ),
       ),
       child: const LoginPage(),

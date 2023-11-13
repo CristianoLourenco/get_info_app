@@ -38,7 +38,9 @@ class TextFieldWidget extends StatelessWidget {
             widthFactor: widthFactor,
             child: TextField(
               maxLength: 20,
+              
               decoration: InputDecoration(
+                contentPadding: EdgeInsets.zero,
                 filled: true,
                 fillColor: Colors.white,
                 prefixIcon: prefixIcon,

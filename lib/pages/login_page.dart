@@ -9,53 +9,58 @@ class LoginPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.transparent,
-      body: Center(
-        child: Column(
-          children: [
-            const Spacer(flex: 5),
-            Expanded(
-              flex: 10,
-              child: Column(
-                children: [
-                  const Spacer(),
-                  const TextFieldWidget(
-                    title: 'Usuário',
-                    prefixIcon: Icon(Icons.person),
-                  ),
-                  const Spacer(),
-                  const TextFieldWidget(
-                    title: 'Senha',
-                    prefixIcon: Icon(Icons.lock),
-                  ),
-                  const Spacer(),
-                  FractionallySizedBox(
-                    widthFactor: 0.45,
-                    child: ElevatedButton(
-                      onPressed: () {},
-                      style: ElevatedButton.styleFrom(
-                        minimumSize: const Size(60, 50),
-                        backgroundColor: const Color(0xFF44bd6e),
-                        foregroundColor: Colors.white,
-                      ),
-                      child: const Text('Entrar'),
+      body: SingleChildScrollView(
+        child: SizedBox(
+          height: MediaQuery.of(context).size.height,
+          child: Column(
+            children: [
+              const Spacer(flex: 5),
+              Expanded(
+                flex: 15,
+                child: Column(
+                  children: [
+                    Text(
+                      'Login',
+                      style: Theme.of(context).textTheme.titleLarge?.copyWith(
+                          color: Colors.white, fontWeight: FontWeight.bold),
                     ),
-                  ),
-                ],
+                    const Spacer(),
+                    const TextFieldWidget(
+                      title: 'Usuário',
+                      prefixIcon: Icon(Icons.person),
+                    ),
+                    const Spacer(),
+                    const TextFieldWidget(
+                      title: 'Senha',
+                      prefixIcon: Icon(Icons.lock),
+                    ),
+                    const Spacer(flex: 2),
+                    FractionallySizedBox(
+                      widthFactor: 0.35,
+                      child: ElevatedButton(
+                        onPressed: () {},
+                        style: ElevatedButton.styleFrom(
+                            minimumSize: const Size(50, 45),
+                            backgroundColor: const Color(0xFF44bd6e),
+                            foregroundColor: Colors.white),
+                        child: const Text('Entrar'),
+                      ),
+                    ),
+                  ],
+                ),
               ),
-            ),
-            const Spacer(flex: 2),
-            TextButton(
-              onPressed: gotGoogleLink,
-              child: Text(
-                'Política de Privacidade',
-                style: Theme.of(context)
-                    .textTheme
-                    .labelSmall
-                    ?.copyWith(color: const Color.fromARGB(139, 255, 255, 255)),
+              const Spacer(),
+              TextButton(
+                onPressed: gotGoogleLink,
+                child: Text(
+                  'Política de Privacidade',
+                  style: Theme.of(context).textTheme.labelSmall?.copyWith(
+                      color: const Color.fromARGB(139, 255, 255, 255)),
+                ),
               ),
-            ),
-            const Spacer(),
-          ],
+              const Divider(color: Colors.transparent),
+            ],
+          ),
         ),
       ),
     );
