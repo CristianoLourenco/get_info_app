@@ -29,21 +29,24 @@ class TextFieldWidget extends StatelessWidget {
           style: Theme.of(context)
               .textTheme
               .labelLarge
-              ?.copyWith(color: Colors.white),
+              ?.copyWith(color: Colors.white, fontWeight: FontWeight.w400),
         ),
         const SizedBox(height: 5),
-        FractionallySizedBox(
-          widthFactor: widthFactor,
-          child: TextField(
-            maxLength: 20,
-            decoration: InputDecoration(
-              filled: true,
-              fillColor: Colors.white,
-              prefixIcon: prefixIcon,
-              enabledBorder: border,
-              focusedBorder: border,
-              border: border,
-              counterText: '',
+        SizedBox(
+          height: 50,
+          child: FractionallySizedBox(
+            widthFactor: widthFactor,
+            child: TextField(
+              maxLength: 20,
+              decoration: InputDecoration(
+                filled: true,
+                fillColor: Colors.white,
+                prefixIcon: prefixIcon,
+                enabledBorder: border,
+                focusedBorder: border,
+                border: border,
+                counterText: '',
+              ),
             ),
           ),
         ),

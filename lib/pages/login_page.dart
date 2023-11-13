@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get_info_app/widget/textfield_widget.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class LoginPage extends StatelessWidget {
   const LoginPage({super.key});
@@ -42,16 +43,26 @@ class LoginPage extends StatelessWidget {
                 ],
               ),
             ),
-            const Spacer(flex: 4),
+            const Spacer(flex: 2),
             TextButton(
-              onPressed: () {},
-              child: const Text('Política de Privacidade'),
+              onPressed: gotGoogleLink,
+              child: Text(
+                'Política de Privacidade',
+                style: Theme.of(context)
+                    .textTheme
+                    .labelSmall
+                    ?.copyWith(color: const Color.fromARGB(139, 255, 255, 255)),
+              ),
             ),
             const Spacer(),
-         
           ],
         ),
       ),
     );
+  }
+
+  Future<void> gotGoogleLink() async {
+    final urlGooglebr = Uri.parse('https://www.google.com.br');
+    await launchUrl(urlGooglebr);
   }
 }

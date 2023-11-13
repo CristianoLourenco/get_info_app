@@ -13,7 +13,7 @@ class HomePage extends StatelessWidget {
           end: Alignment.bottomCenter,
           colors: <Color>[
             Color(0xFF1C4E64),
-            Color(0xFF299790),
+           ,
           ],
         ),
       ),
