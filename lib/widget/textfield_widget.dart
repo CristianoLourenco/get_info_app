@@ -4,13 +4,15 @@ class TextFieldWidget extends StatelessWidget {
   const TextFieldWidget({
     super.key,
     this.widthFactor = 0.70,
-    required this.prefixIcon,
+    this.prefixIcon,
     required this.title,
+    this.textAlign = TextAlign.start,
   });
 
   final double widthFactor;
-  final Icon prefixIcon;
+  final Icon? prefixIcon;
   final String title;
+  final TextAlign textAlign;
 
   @override
   Widget build(BuildContext context) {
@@ -38,7 +40,7 @@ class TextFieldWidget extends StatelessWidget {
             widthFactor: widthFactor,
             child: TextField(
               maxLength: 20,
-              
+              textAlign: textAlign,
               decoration: InputDecoration(
                 contentPadding: EdgeInsets.zero,
                 filled: true,

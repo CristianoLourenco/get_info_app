@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get_info_app/pages/get_info_page.dart';
 import 'package:get_info_app/widget/textfield_widget.dart';
 import 'package:url_launcher/url_launcher.dart';
 
@@ -38,7 +39,7 @@ class LoginPage extends StatelessWidget {
                     FractionallySizedBox(
                       widthFactor: 0.35,
                       child: ElevatedButton(
-                        onPressed: () {},
+                        onPressed: () => callGetInfoPage(context),
                         style: ElevatedButton.styleFrom(
                             minimumSize: const Size(50, 45),
                             backgroundColor: const Color(0xFF44bd6e),
@@ -51,7 +52,7 @@ class LoginPage extends StatelessWidget {
               ),
               const Spacer(),
               TextButton(
-                onPressed: gotGoogleLink,
+                onPressed: gotoGoogleLink,
                 child: Text(
                   'Política de Privacidade',
                   style: Theme.of(context).textTheme.labelSmall?.copyWith(
@@ -66,8 +67,16 @@ class LoginPage extends StatelessWidget {
     );
   }
 
-  Future<void> gotGoogleLink() async {
+  Future<void> gotoGoogleLink() async {
     final urlGooglebr = Uri.parse('https://www.google.com.br');
     await launchUrl(urlGooglebr);
+  }
+
+  void callGetInfoPage(BuildContext context) {
+    Navigator.of(context).push(
+      MaterialPageRoute(
+        builder: (context) => const GetInfoPage(),
+      ),
+    );
   }
 }
