@@ -24,6 +24,18 @@ class GetInfoPage extends StatelessWidget {
                   separatorBuilder: (context, index) => const Divider(),
                   itemBuilder: (context, index) => ListTile(
                     title: Text('Text $index'),
+                    trailing: Expanded(
+                      child: Row(
+                        children: [
+                          IconButton(
+                              onPressed: () {}, icon: const Icon(Icons.delete)),
+                          IconButton(
+                            onPressed: () {},
+                            icon: const Icon(Icons.edit),
+                          ),
+                        ],
+                      ),
+                    ),
                   ),
                 ),
               ),
@@ -32,7 +44,7 @@ class GetInfoPage extends StatelessWidget {
             const TextFieldWidget(
               textAlign: TextAlign.center,
               widthFactor: 1,
-              title: '',
+              hintText: 'Digite algo...',
             ),
             const Spacer(flex: 2)
           ],

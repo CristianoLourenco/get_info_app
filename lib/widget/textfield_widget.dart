@@ -5,14 +5,16 @@ class TextFieldWidget extends StatelessWidget {
     super.key,
     this.widthFactor = 0.70,
     this.prefixIcon,
-    required this.title,
+    this.title,
     this.textAlign = TextAlign.start,
+    this.hintText,
   });
 
   final double widthFactor;
   final Icon? prefixIcon;
-  final String title;
+  final String? title;
   final TextAlign textAlign;
+  final String? hintText;
 
   @override
   Widget build(BuildContext context) {
@@ -27,7 +29,7 @@ class TextFieldWidget extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Text(
-          title,
+          title ?? '',
           style: Theme.of(context)
               .textTheme
               .labelLarge
@@ -49,6 +51,7 @@ class TextFieldWidget extends StatelessWidget {
                 enabledBorder: border,
                 focusedBorder: border,
                 border: border,
+                hintText: hintText,
                 counterText: '',
               ),
             ),
