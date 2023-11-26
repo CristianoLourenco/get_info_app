@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart'; 
+import 'package:flutter/material.dart';
 import 'package:get_info_app/pages/home_page.dart';
 
 void main() {
@@ -13,9 +13,9 @@ class App extends StatelessWidget {
     return MaterialApp(
       title: 'Flutter Prov App',
       theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: const Color(0xFF299790)),
-        useMaterial3: true,
-      ),
+          colorScheme: ColorScheme.fromSeed(seedColor: const Color(0xFF299790)),
+          useMaterial3: true,
+          dividerTheme: const DividerThemeData(color: Colors.transparent)),
       home: const HomePage(),
     );
   }

@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get_info_app/pages/get_info_page.dart';
 import 'package:get_info_app/widget/textfield_widget.dart';
-import 'package:url_launcher/url_launcher.dart';
 
 class LoginPage extends StatelessWidget {
   const LoginPage({super.key});
@@ -14,68 +13,44 @@ class LoginPage extends StatelessWidget {
         child: SizedBox(
           height: MediaQuery.of(context).size.height,
           child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              const Spacer(flex: 5),
-              Expanded(
-                flex: 15,
-                child: Column(
-                  children: [
-                    Text(
-                      'Login',
-                      style: Theme.of(context).textTheme.titleLarge?.copyWith(
-                          color: Colors.white, fontWeight: FontWeight.bold),
-                    ),
-                    const Spacer(),
-                    const TextFieldWidget(
-                      title: 'Usuário',
-                      prefixIcon: Icon(Icons.person),
-                    ),
-                    const Spacer(),
-                    const TextFieldWidget(
-                      title: 'Senha',
-                      prefixIcon: Icon(Icons.lock),
-                    ),
-                    const Spacer(flex: 2),
-                    FractionallySizedBox(
-                      widthFactor: 0.35,
-                      child: ElevatedButton(
-                        onPressed: () => callGetInfoPage(context),
-                        style: ElevatedButton.styleFrom(
-                            minimumSize: const Size(50, 45),
-                            backgroundColor: const Color(0xFF44bd6e),
-                            foregroundColor: Colors.white),
-                        child: const Text('Entrar'),
+              Text(
+                'Login',
+                style: Theme.of(context).textTheme.titleLarge?.copyWith(
+                    color: Colors.white, fontWeight: FontWeight.bold),
+              ),
+              const SizedBox(height: 50),
+              const TextFieldWidget(
+                title: 'Usuário',
+                prefixIcon: Icon(Icons.person),
+              ),
+              const Divider(height: 25),
+              const TextFieldWidget(
+                title: 'Senha',
+                prefixIcon: Icon(Icons.lock),
+              ),
+              const SizedBox(height: 100),
+              FractionallySizedBox(
+                widthFactor: 0.35,
+                child: ElevatedButton(
+                  onPressed: () {
+                    Navigator.of(context).push(
+                      MaterialPageRoute(
+                        builder: (context) => const GetInfoPage(),
                       ),
-                    ),
-                  ],
+                    );
+                  },
+                  style: ElevatedButton.styleFrom(
+                      minimumSize: const Size(50, 45),
+                      backgroundColor: const Color(0xFF44bd6e),
+                      foregroundColor: Colors.white),
+                  child: const Text('Entrar'),
                 ),
               ),
-              const Spacer(),
-              TextButton(
-                onPressed: gotoGoogleLink,
-                child: Text(
-                  'Política de Privacidade',
-                  style: Theme.of(context).textTheme.labelSmall?.copyWith(
-                      color: const Color.fromARGB(139, 255, 255, 255)),
-                ),
-              ),
-              const Divider(color: Colors.transparent),
             ],
           ),
         ),
-      ),
-    );
-  }
-
-  Future<void> gotoGoogleLink() async {
-    final urlGooglebr = Uri.parse('https://www.google.com.br');
-    await launchUrl(urlGooglebr);
-  }
-
-  void callGetInfoPage(BuildContext context) {
-    Navigator.of(context).push(
-      MaterialPageRoute(
-        builder: (context) => const GetInfoPage(),
       ),
     );
   }

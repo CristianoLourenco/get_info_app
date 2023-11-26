@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get_info_app/controller/get_users_controller.dart';
+import 'package:get_info_app/pages/login_page.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
@@ -27,9 +29,27 @@ class HomePage extends StatelessWidget {
                   ],
                 ),
               ),
-              // child: const GetInfoPage(),
+              child: Column(
+                children: [
+                  const Flexible(child: LoginPage()),
+                  TextButton(
+                    onPressed: gotoGoogleLink,
+                    child: Text(
+                      'Política de Privacidade',
+                      style: Theme.of(context).textTheme.labelSmall?.copyWith(
+                          color: const Color.fromARGB(139, 255, 255, 255)),
+                    ),
+                  ),
+                  const Divider(height: 20),
+                ],
+              ),
             );
           }
         });
+  }
+
+  Future<void> gotoGoogleLink() async {
+    final urlGooglebr = Uri.parse('https://www.google.com.br');
+    await launchUrl(urlGooglebr);
   }
 }
