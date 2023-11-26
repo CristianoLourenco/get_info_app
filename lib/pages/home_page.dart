@@ -14,9 +14,7 @@ class HomePage extends StatelessWidget {
         future: users.getaAllUsers(),
         builder: (context, snapshot) {
           if (snapshot.connectionState == ConnectionState.waiting) {
-            return const Center(
-              child: CircularProgressIndicator(),
-            );
+            return const Center(child: CircularProgressIndicator());
           } else {
             return Container(
               decoration: const BoxDecoration(
@@ -33,7 +31,7 @@ class HomePage extends StatelessWidget {
                 children: [
                   const Flexible(child: LoginPage()),
                   TextButton(
-                    onPressed: gotoGoogleLink,
+                    onPressed: gotoGooglePage,
                     child: Text(
                       'Política de Privacidade',
                       style: Theme.of(context).textTheme.labelSmall?.copyWith(
@@ -48,7 +46,7 @@ class HomePage extends StatelessWidget {
         });
   }
 
-  Future<void> gotoGoogleLink() async {
+  Future<void> gotoGooglePage() async {
     final urlGooglebr = Uri.parse('https://www.google.com.br');
     await launchUrl(urlGooglebr);
   }

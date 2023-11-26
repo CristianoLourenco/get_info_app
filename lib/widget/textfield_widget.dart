@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 class TextFieldWidget extends StatelessWidget {
   const TextFieldWidget({
@@ -8,22 +9,21 @@ class TextFieldWidget extends StatelessWidget {
     this.title,
     this.textAlign = TextAlign.start,
     this.hintText,
+    this.controller,
+    this.validator,
+    this.inputFormatters,
   });
 
   final double widthFactor;
   final Icon? prefixIcon;
-  final String? title;
+  final String? title, hintText;
   final TextAlign textAlign;
-  final String? hintText;
+  final TextEditingController? controller;
+  final String? Function(String?)? validator;
+  final List<TextInputFormatter>? inputFormatters;
 
   @override
   Widget build(BuildContext context) {
-    final border = OutlineInputBorder(
-      borderRadius: BorderRadius.circular(8),
-      borderSide: const BorderSide(color: Colors.white),
-      gapPadding: 100,
-    );
-
     return Column(
       mainAxisSize: MainAxisSize.min,
       crossAxisAlignment: CrossAxisAlignment.start,
@@ -36,23 +36,23 @@ class TextFieldWidget extends StatelessWidget {
               ?.copyWith(color: Colors.white, fontWeight: FontWeight.w400),
         ),
         const SizedBox(height: 5),
-        SizedBox(
-          height: 50,
-          child: FractionallySizedBox(
-            widthFactor: widthFactor,
-            child: TextField(
+        FractionallySizedBox(
+          widthFactor: widthFactor,
+          child: Card(
+            shape:
+                RoundedRectangleBorder(borderRadius: BorderRadius.circular(6)),
+            elevation: 4,
+            child: TextFormField(
               maxLength: 20,
               textAlign: textAlign,
+              validator: validator,
+              controller: controller,
+              inputFormatters: inputFormatters,
               decoration: InputDecoration(
-                contentPadding: EdgeInsets.zero,
-                filled: true,
-                fillColor: Colors.white,
                 prefixIcon: prefixIcon,
-                enabledBorder: border,
-                focusedBorder: border,
-                border: border,
                 hintText: hintText,
                 counterText: '',
+                border: InputBorder.none,
               ),
             ),
           ),
