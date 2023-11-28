@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get_info_app/controller/get_users_controller.dart';
+import 'package:get_info_app/pages/get_info_page.dart';
 import 'package:get_info_app/pages/login_page.dart';
 import 'package:url_launcher/url_launcher.dart';
 
@@ -9,6 +10,7 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final users = GetUsersController();
+    final pageController = PageController();
 
     return FutureBuilder(
         future: users.getaAllUsers(),
@@ -29,7 +31,16 @@ class HomePage extends StatelessWidget {
               ),
               child: Column(
                 children: [
-                  const Flexible(child: LoginPage()),
+                  Flexible(
+                    child: PageView(
+                      allowImplicitScrolling: false,
+                      controller: pageController,
+                      children: <Widget>[
+                        LoginPage(pageController: pageController),
+                        const GetInfoPage(),
+                      ],
+                    ),
+                  ),
                   TextButton(
                     onPressed: gotoGooglePage,
                     child: Text(

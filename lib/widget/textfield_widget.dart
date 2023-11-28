@@ -12,8 +12,12 @@ class TextFieldWidget extends StatelessWidget {
     this.controller,
     this.validator,
     this.inputFormatters,
+    this.focusNode,
+    this.autofocus = false,
   });
 
+  final FocusNode? focusNode;
+  final bool autofocus;
   final double widthFactor;
   final Icon? prefixIcon;
   final String? title, hintText;
@@ -38,21 +42,27 @@ class TextFieldWidget extends StatelessWidget {
         const SizedBox(height: 5),
         FractionallySizedBox(
           widthFactor: widthFactor,
-          child: Card(
-            shape:
-                RoundedRectangleBorder(borderRadius: BorderRadius.circular(6)),
-            elevation: 4,
-            child: TextFormField(
-              maxLength: 20,
-              textAlign: textAlign,
-              validator: validator,
-              controller: controller,
-              inputFormatters: inputFormatters,
-              decoration: InputDecoration(
-                prefixIcon: prefixIcon,
-                hintText: hintText,
-                counterText: '',
-                border: InputBorder.none,
+          child: SizedBox(
+            height: 60,
+            child: Card(
+              shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(6)),
+              elevation: 4,
+              child: TextFormField(
+                autofocus: autofocus,
+                focusNode: focusNode,
+                maxLength: 20,
+                textAlign: textAlign,
+                validator: validator,
+                controller: controller,
+                
+                inputFormatters: inputFormatters,
+                decoration: InputDecoration(
+                  prefixIcon: prefixIcon,
+                  hintText: hintText,
+                  counterText: '',
+                  border: InputBorder.none,
+                ),
               ),
             ),
           ),
